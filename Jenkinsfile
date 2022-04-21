@@ -11,7 +11,7 @@ pipeline{
                 script{
                    withSonarQubeEnv(credentialsId: 'sonar') {
                      sh 'chmod +x gradlew'
-                     sh ' mvn clean package sonar:sonar '
+                     sh './gradlew sonarqube -Dsonar.host.url=http://192.168.56.12:9000 -Dsonar.java.binaries=/etc/sonarqube'
                    }
                    timeout(time: 1, unit: 'HOURS') {
                       def qg = waitForQualityGate()
