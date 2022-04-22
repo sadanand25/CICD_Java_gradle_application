@@ -10,6 +10,7 @@ pipeline{
             steps{
                 script{
                    withSonarQubeEnv(credentialsId: 'sonar') {
+                            sh 'pwd'
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
                     }
